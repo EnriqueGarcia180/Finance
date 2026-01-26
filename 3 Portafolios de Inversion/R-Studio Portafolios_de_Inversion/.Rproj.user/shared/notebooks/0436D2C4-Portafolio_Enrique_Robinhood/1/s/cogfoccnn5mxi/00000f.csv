@@ -1,0 +1,7 @@
+"0","opt.wghts<-matrix(extractWeights(port_min_global))"
+"0",""
+"0","print(paste(""Suma de los weights:"", sum(opt.wghts)))"
+"1","[1]"
+"1"," ""Suma de los weights: 0.999999999999998"""
+"1","
+"

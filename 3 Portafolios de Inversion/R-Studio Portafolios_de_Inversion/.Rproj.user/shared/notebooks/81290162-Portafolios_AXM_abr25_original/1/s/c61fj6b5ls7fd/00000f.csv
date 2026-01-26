@@ -1,0 +1,2 @@
+"0","assets.select<-c(""SHELL"",""NIKE"",""FORD"",""SAM"",""GOVT"")"
+"0","subassets<-ret.assets[,assets.select]"

@@ -1,0 +1,5 @@
+{
+    "notebook.cellExecutionTimeVerbosity": "verbose",
+    "notebook.cellFocusIndicator": "border",
+    "notebook.cellToolbarVisibility": "hover"
+}

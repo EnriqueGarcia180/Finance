@@ -1,0 +1,10 @@
+"0","risk_maxSR<-port_maxSR[[""objective_measures""]][[""StdDev""]]"
+"0","risk_maxSR"
+"1","    StdDev 
+0.01271832 
+"
+"0","mean_maxSR<-port_maxSR[[""objective_measures""]][[""mean""]]"
+"0","mean_maxSR"
+"1","         mean 
+-3.017312e-05 
+"

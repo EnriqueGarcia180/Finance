@@ -1,0 +1,4 @@
+"0","# Generate plot of weights along the efficient frontier"
+"0","chart.EF.Weights(port_maxSR, "
+"0","                 n.portfolios = ncol(ret.assets), #number of portfolios (all)"
+"0","                 match.col = ""StdDev"")"

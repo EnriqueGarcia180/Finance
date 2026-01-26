@@ -1,0 +1,3 @@
+"0","minvar.port<-valores.portafolio[which.min(valores.portafolio$Riesgo),]"
+"0","maxsr.port<-valores.portafolio[which.max(valores.portafolio$Sharpe),]"
+"0","minvar.port"

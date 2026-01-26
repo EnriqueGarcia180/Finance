@@ -1,0 +1,4 @@
+"0","xfit <- seq(min(ret.assets$SHELL), max(ret.assets$SHELL), length = 80)"
+"0","yfit <- dnorm(xfit, mean = mean(ret.assets$SHELL), sd = sd(ret.assets$SHELL))"
+"0","yfit <- yfit * diff(hist.shell$mids[1:2]) * length(ret.assets$SHELL)"
+"0","lines(xfit, yfit, col = c(""blue""), lwd = 2)"

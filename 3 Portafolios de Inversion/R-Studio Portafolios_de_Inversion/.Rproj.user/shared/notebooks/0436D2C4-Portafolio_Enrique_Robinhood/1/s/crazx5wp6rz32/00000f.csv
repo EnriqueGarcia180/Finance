@@ -1,0 +1,5 @@
+"0","simul<-10000"
+"0","sim.wgts<-matrix(nrow = simul,ncol=length(tickers))"
+"0","sim.rets<-as.numeric(vector(length = simul))"
+"0","sim.risk<-as.numeric(vector(length = simul))"
+"0","sim.sharpe<-as.numeric(vector(length=simul))"

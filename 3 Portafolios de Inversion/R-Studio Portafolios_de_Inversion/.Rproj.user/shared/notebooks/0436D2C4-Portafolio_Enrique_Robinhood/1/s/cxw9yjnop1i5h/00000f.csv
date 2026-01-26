@@ -1,0 +1,4 @@
+"0"," #tibble() constructs a data frame"
+"0","valores.portafolio<-tibble(Rendimiento=sim.rets,  "
+"0","                           Riesgo=sim.risk,"
+"0","                           Sharpe=sim.sharpe)"

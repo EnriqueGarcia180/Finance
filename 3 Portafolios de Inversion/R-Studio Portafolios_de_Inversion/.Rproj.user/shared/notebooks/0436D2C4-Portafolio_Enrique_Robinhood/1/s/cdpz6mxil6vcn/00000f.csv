@@ -1,0 +1,2 @@
+"0","colnames(sim.wgts1)<-colnames(ret.assets)"
+"0","sim.wgts1 #<- weights of each random portfolio"

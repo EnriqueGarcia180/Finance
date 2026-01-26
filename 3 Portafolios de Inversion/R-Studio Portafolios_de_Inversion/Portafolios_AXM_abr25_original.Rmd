@@ -1,0 +1,679 @@
+---
+title: "Construcción de portafolios de inversión - Career Path in finance"
+author: "Dr. Jesús Cuauhtémoc Téllez Gaytán - Profesor de Finanzas ITESM"
+date: "2024-04-25"
+output:
+   html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    theme: journal
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,fig.path = "images_AXM_CPF/")
+```
+
+
+# Business Case
+Construir portafolios de inversión con activos de capital y de deuda, en donde se analice/revise el principio de diversificación propuesto por H. Markowitz (1952).
+
+## Objetivo específico
+Construir la frontera eficiente para un portafolio de activos financieros; estimar el portafolio de mínima-varianza y medida de desempeño Sharpe-ratio.
+
+# Librerías
+```{r,include=FALSE}
+library(quantmod) # permite vincular R con portales
+library(PortfolioAnalytics)
+library(ROI)
+library(ROI.plugin.glpk)
+library(ROI.plugin.deoptim)
+library(ROI.plugin.quadprog)
+library(fBasics) # estadísticos
+library(psych) # estadísticos
+library(readxl) # importar datos de excel
+library(writexl) # exportar objetos a excel
+library(stats) # estadísticas
+library(nortest) # pruebas de Normalidad
+library(imputeTS) # permite interpolar datos
+library(urca)
+library(ggplot2)
+library(ggcorrplot)
+library(tidyquant)
+library(tibble)
+library(timetk)
+library(plotly)
+```
+
+# Arreglo de datos
+```{r}
+# este chunk servirá para hacer sumas
+A=10
+B=20
+c= A+B
+c
+```
+
+```{r}
+# Robinhood_20250919 = c("QYLD", "NVDA", "PBR", "PLTR", "MSFT", "AAPL", "NU", "DIS", "VOOV", "TSM", "GLD", "QQQM", "VOOG", "KO", "SOFI", "QSR", "UNH", "TSLA", "SPYD", "SERV", "SOXX", "VOO", "OMAB", "VYM", "VGT", "GOOGL", "CME", "GOOG", "META", "BAC", "CRWD", "MCD", "SPYG", "VUG", "ADBE", "MAR", "VTV", "CAT", "LMT", "ASML", "BRK.B", "SPG", "NFLX", "PSA", "HD")
+
+# Government_ETFs: GOVT (1-30Y), TLT- (20Y+), IBTA (1-3Y), IEF (7-10Y), IEI (3-7Y), SHY (1-3Y).
+
+example_class = c("SHEL","CVX","BKR","NKE","SAM","FORD","GOOG","DELL","AMZN","MRVL","GOVT","TLT","IBTA.L","IEF","IEI","SHY")
+
+getSymbols(Symbols= example_class, from="2021-04-25",to="2025-09-19", periodicity = "daily", src = "yahoo")
+```
+
+```{r}
+# Combinar todos las columnas de Adjusted Price (6a columna) de todos los assets en la tabla rawprices
+rawprices<-(merge(SHEL[,6],CVX[,6],BKR[,6],NKE[,6],SAM[,6],FORD[,6],GOOG[,6],DELL[,6],AMZN[,6],MRVL[,6],GOVT[,6],TLT[,6],IBTA.L[,6],IEF[,6],IEI[,6],SHY[,6]))
+# Nombres de los assets
+assets<-c("SHELL","CHEVRON","BAKER","NIKE","SAM","FORD","GOOGLE","DELL","AMAZON","MARVEL","GOVT","TLT","IBTA","IEF","IEI","SHY")
+# Renombrar los encabezados de la tabla rawprices con los nombres de los assets
+colnames(rawprices)<-c(assets)
+```
+
+```{r}
+#returns all the rows from the rawprices data frame that contain at least one missing value (NA)
+rawprices[!complete.cases(rawprices),]
+```
+
+```{r}
+# Imputar valores NA usando interpolacion (spline in this case)
+prices.in<-na_interpolation(rawprices,option="spline")
+```
+
+```{r}
+# verificamos nuevamente la existencia de espacios en blanco
+prices.in[!complete.cases(prices.in),]
+```
+
+## Cambios porcentuales
+```{r}
+# Construimos un objeto llamado ret.assets (ret: return) en donde almacenamos los cambios porcentuales de los precios (utilizando el enfoque log) o Logatitmic Return
+# diff, son primeras diferencias: P(1) - P(0)
+#calculates the continuous, or logarithmic, returns of an asset and removes any missing values from the result. 
+ret.assets<-na.omit(diff(log(prices.in)))
+```
+
+## Gráficos precios y rendimientos
+Lo siguiente permite combinar el gráfico original del tipo de cambio y los valores de los cambios porcentuales.
+
+```{r,price and returns FIRST asset in the list}
+# Price and Returns of the FIRST asset in the list
+plot(prices.in[,1], main=paste("Adj. Prices: ",names(prices.in)[1])) 
+lines(ret.assets[,1],type="h",on=NA,col="blue", main=paste("Returns: ",names(ret.assets)[1]))
+```
+
+```{r,price and returns SECOND asset in the list}
+# Price and Returns of the SECOND asset in the list
+plot(prices.in[,2], main=paste("Adj. Prices: ",names(prices.in)[2])) 
+lines(ret.assets[,2],type="h",on=NA,col="blue", main=paste("Returns: ",names(ret.assets)[2]))
+```
+
+# Análisis estadístico de los "Returns"
+## Estadísticos descriptivos de "Returns"
+```{r}
+describe(ret.assets)
+```
+
+Curtosis:
+Cuando la curtosis K> 3, entonces decimos la ddp es leptocurtica
+K=3, distribucion normal.
+Resumen: la distribución de probabilidad de los cambios porcentuales de los activos financieros, no es una Normal.
+Normal del mercado es que es poco probable (casi cero) de que ocurran eventos extremos.
+Sesgo (Skewness), positivo o negativo
+Negativo: mayormente hemos observado caídas que alzas
+Positivo: mayormente hemos observado alzas que caidas
+
+
+## Correlaciones
+```{r}
+rets.cor<-cor(ret.assets)
+```
+
+```{r,assetscor}
+ggcorrplot(rets.cor,tl.cex = 7,lab=TRUE,lab_size = 2)
+```
+
+## Histograma de frecuencias
+
+```{r,hist FIRST asset}
+hist_first <- hist(ret.assets[,1], breaks = 40, main = paste("Histograma con curva normal:", names(ret.assets)[1]),
+          cex.main=0.8,cex.axis=0.8,xlab = paste("Returns ", names(ret.assets)[1],"%"),ylab = "Frecuencia",cex.lab=0.8)
+xfit <- seq(min(ret.assets[,1]), max(ret.assets[,1]), length = 100)
+yfit <- dnorm(xfit, mean = mean(ret.assets[,1]), sd = sd(ret.assets[,1]))
+yfit <- yfit * diff(hist_first$mids[1:2]) * length(ret.assets[,1])
+lines(xfit, yfit, col = c("blue"), lwd = 2)
+```
+
+# Análisis de series de tiempo
+
+## Pruebas de NORMALIDAD: Lilliefors (Kolmogorov-Smirnov) test for normality
+
+### Pruebas en "FIRST" asset
+```{r}
+norm_test_result = lillie.test(ret.assets[,1])
+print(norm_test_result)
+if(norm_test_result$p.value > 0.05){
+  print("Dado que p-value>0.05, entonces No se rechaza la hipotesis nula H0, es decir, Los rendimientos se distribuyen de forma Normal")
+} else{
+  print("Dado que p-value <= 0.05, entonces SI se rechaza la Hipotesis nula H0, los rendimientos NO se distribuyen como una Normal")
+}
+  
+```
+
+La hipótesis nula H0: los rendimientos se distribuyen como una Normal.
+La hipótesis alterna H1: los rendimientos NO se distribuyen como una Normal.
+
+Interpretación: si el p-value es mayor que 0.05 entonces NO se rechaza la H0; si el p-value es menor que 0.05 entonces se rechaza la H0.
+Los rendimientos del FIRST asset no se distribuyen como una Normal si p<0.05 y viceversa.
+
+### Pruebas en el "SEGUNDO" asset
+```{r}
+norm_test_result = lillie.test(ret.assets[,2])
+print(norm_test_result)
+if(norm_test_result$p.value > 0.05){
+  print("Dado que p-value>0.05, entonces No se rechaza la hipotesis nula H0, es decir, Los rendimientos se distribuyen de forma Normal")
+} else{
+  print("Dado que p-value <= 0.05, entonces SI se rechaza la Hipotesis nula H0, los rendimientos NO se distribuyen como una Normal")
+}
+```
+
+
+## Prueba de ESTACIONARIEDAD - Augmented-Dickey-Fuller Unit Root Test
+
+
+### Pruebas en el FIRST asset sobre Retornos y Precios
+Se observara que los Retornos SI son estacionarios pero los Precios NO.
+
+1. La prueba se realiza sobre los Rendimientos o Retornos logarítmicos:
+Se observa que los Retornos son Estacionarios
+```{r}
+FIRST_asset_ur<-ur.df(ret.assets[,1],type = "none")
+summary(FIRST_asset_ur)
+```
+
+Regla de dedo: si el estadístico de prueba en valor absoluto es mayor que los valores críticos en valor absoluto, entonces se dice que la serie de tiempo es ESTACIONARIA. Entonces decimos que, las variaciones porcentuales del activo financiero corresponden a una serie estacionaria.
+
+Una serie estacionaria en estadística es aquella serie temporal cuyas propiedades estadísticas, como la media y la varianza, se mantienen constantes a lo largo del tiempo. Esto significa que no hay tendencia al alza o a la baja a largo plazo, y la variabilidad de los datos alrededor de la media es también constante. Una serie estacionaria es más fácil de predecir, ya que sus características no cambian con el tiempo. 
+
+Media constante: El valor promedio de la serie no cambia con el tiempo. 
+Varianza constante (homocedasticidad): La dispersión de los datos con respecto a la media permanece igual a lo largo del tiempo. 
+Sin tendencia: No hay un patrón de crecimiento o decrecimiento a largo plazo en la serie.  
+Independencia temporal (para modelos más estrictos): En un sentido más formal, las probabilidades de eventos futuros son independientes del orden en el tiempo. 
+¿Por qué es importante?
+La estacionariedad es fundamental en el análisis de series temporales por varias razones: 
+Facilita la predicción: Si una serie se ha comportado de una manera en el pasado, se puede predecir con mayor probabilidad su comportamiento futuro. 
+Simplifica el modelado: Los métodos estadísticos y los modelos para series estacionarias son más sencillos de aplicar y proporcionan resultados más fiables. 
+Validez de los resultados: Muchos procedimientos y pruebas estadísticas requieren que los datos sean estacionarios para ser válidos. 
+
+Ejemplo de serie estacionaria: 
+Un proceso de ruido blanco, donde los valores oscilan aleatoriamente alrededor de una media constante con variabilidad constante, es un ejemplo clásico de serie estacionaria. 
+Ejemplo de serie no estacionaria:
+Los precios de un activo financiero a menudo muestran tendencias y cambios en su variabilidad, por lo que no suelen ser estacionarios. 
+
+Based on the results of the Augmented Dickey-Fuller (ADF) test, the time series you're analyzing does not have a unit root and is stationary.
+
+Understanding the ADF Test
+The Augmented Dickey-Fuller (ADF) test is a statistical test used to determine if a time series has a unit root, which would indicate that it's non-stationary.
+
+A non-stationary time series has properties like mean, variance, and autocorrelation that change over time. These series are often unpredictable and can lead to spurious regression results.
+
+A stationary time series has constant statistical properties over time, making it easier to model and forecast.
+
+The ADF test has two competing hypotheses:
+
+Null Hypothesis (H0): The time series has a unit root (it's non-stationary).
+
+Alternative Hypothesis (Ha): The time series does not have a unit root (it's stationary).
+
+Interpreting Your Results
+The core of the interpretation lies in comparing the calculated test statistic to the provided critical values. The critical values represent the thresholds for rejecting the null hypothesis at different significance levels (1%, 5%, and 10%).
+
+Test-statistic: Your calculated value is -24.5868.
+
+Critical values:
+
+1% significance level: -2.58
+
+5% significance level: -1.95
+
+10% significance level: -1.62
+
+Decision Rule: You reject the null hypothesis if the absolute value of the test statistic is larger than the absolute value of the critical value, or equivalently, if the test statistic is a more negative number (further to the left on the number line) than the critical value.
+
+Your Conclusion:
+
+Since your test statistic of -24.5868 is much more negative than all the critical values, you can reject the null hypothesis at all conventional significance levels (1%, 5%, and 10%).
+
+This means you have very strong evidence to conclude that the time series does not have a unit root and IS stationary.
+
+
+
+2. Se contrasta utilizando los precios.
+Se observa que los Precios NO son Estacionarios
+```{r}
+FIRST_asset_price.ur<-ur.df(prices.in[,1],type = "none")
+summary(FIRST_asset_price.ur)
+```
+Conclusion: Los Precios NO son estacionarios, no se rechaza la hipótesis nula (H0).
+
+
+
+# Construcción del Portafolio. Camino largo
+## Rendimiento y riesgo del portafolio
+### Rendimiento del portafolio
+
+```{r}
+
+# Sub set del portafolio original
+assets_select <-c("SHELL","NIKE","FORD","SAM","GOVT")
+# Returns
+subassets<-ret.assets[,assets_select]
+```
+
+```{r}
+# Esta función calcula el valor promedio por columna. El promedio de los Retornos de cada Asset.
+
+# Average Daily Return
+assets.mean<-round(colMeans(subassets),6)
+assets.mean
+```
+
+### Matriz de correlaciones
+```{r}
+cor(subassets)
+```
+
+### Matriz de covarianza del portafolio
+```{r}
+cov.port<-round(cov(subassets),6)
+cov.port
+```
+
+### Vector de proporciones (aleatorio) invertidas en cada activo
+
+Construimos un vector de proporciones a través de la creación de números aleatorios entre 0 y 1, 
+equivalente a decir que dichos números se distribuyen como una Uniforme.
+
+```{r}
+set.seed(42)
+wgts<-runif(n=length(assets_select))
+wgts
+```
+
+Sin embargo, la suma de esas proporciones puede ser mayor que 1, pero nuestra restricción es que no debe rebasar 1. Por lo tanto, ponderamos cada número obtenido respecto a la suma de las proporciones.
+```{r}
+wgts<-wgts/sum(wgts)
+wgts
+```
+
+### Combinación Rendimiento y Riesgo del portafolio (forma rápida de simples mortales)
+```{r}
+ret.port<-(assets.mean%*%wgts)*252  #  %*%: This is the operator for matrix multiplication
+ret.port
+```
+Revisemos el rendimiento Anualizado "correcto"
+```{r}
+ret.port01<-((1+(assets.mean%*%wgts))^252)-1
+ret.port01
+```
+¿Qué aprendemos? 
+Respuesta: el primer método (aproximado) no es sustancialmente diferente del método correcto para Anualizar el rendimiento del periodo.
+
+
+```{r}
+cov.port<-round(cov(subassets),6)
+cov.port
+```
+
+### Riezgo del Portafolio (std dev)
+
+```{r}
+var.port<-(wgts%*%cov.port)%*%(wgts)
+risk.port<-sqrt(var.port*252)
+risk.port
+```
+
+
+# La Frontera Eficiente
+## Construcción de "n" portafolios
+Consideramos los siguientes pasos: 
+
+1) número de simulaciones equivalente al número de portafolios por construir; 
+
+2) el objeto en donde guardaremos las "n" proporciones posibles asignadas a cada activo; 
+
+3) el objeto en donde guardaremos los "n" rendimientos posibles del portafolio; 
+
+4) el objeto con las "n" desviaciones estándar del portafolio; 
+
+5) el objeto con los "n" Sharpe Ratios; 
+
+6) finalmente, la simulación.
+
+
+Crear vectores y matrices vacios
+```{r}
+simul<-500
+sim.wgts<-matrix(nrow = simul,ncol=length(assets_select))
+sim.rets<-as.numeric(vector(length = simul))
+sim.risk<-as.numeric(vector(length = simul))
+sim.sharpe<-as.numeric(vector(length=simul))
+```
+
+
+Creamos la simulación a través de un ciclo FOR-NEXT.
+
+Weights, Portfolio Returns, Portfolio StdDev, Portfolio Sharp Ratio; for each simulation (Anualizados):
+
+```{r}
+set.seed(42)
+for (retorno in seq_along(sim.rets)) {
+  wgts<-runif(length(assets_select))
+  wgts<-wgts/sum(wgts)
+  sim.wgts[retorno,]<-wgts
+  
+  port.ret<-(wgts%*%assets.mean)*252
+  sim.rets[retorno]<-port.ret
+  
+  port.sd<-sqrt((wgts%*%cov.port%*%wgts)*252)
+  sim.risk[retorno]<-port.sd
+  
+  sr<-(port.ret)/port.sd
+  sim.sharpe[retorno]<-sr
+}
+```
+
+Dataset con riesgos y retornos del portafolio de todas las simulaciones:
+
+```{r}
+portafolios<-data.frame(sim.risk,sim.rets)
+```
+
+Plot de Riesgo vs Returns:
+
+```{r}
+ggplot(portafolios,aes(x=sim.risk, y=sim.rets)) + 
+        geom_point(alpha=0.2) + 
+        theme_minimal() +
+        labs(title='Frontera Eficiente', x= 'Riesgo', y='Rendimiento')
+
+```
+
+Guardamos los valores en una tabla o Data Frame
+```{r}
+valores.portafolio<-tibble(Rendimiento=sim.rets,   #tibble() constructs a data frame
+                           Riesgo=sim.risk,
+                           Sharpe=sim.sharpe)
+```
+
+
+El objeto de las proporciones dentro del LOOP es tipo "matriz" la cual se convierte a tipo "tabla" para combinar con el objeto "valores.portafolio".
+```{r}
+sim.wgts1<-tk_tbl(sim.wgts) 
+
+# tk_tbl is designed to coerce time series objects (e.g. xts, zoo, ts, timeSeries, etc) to tibble objects.
+                            
+# To coerce means to force an object of one class into an object of another class. It's an explicit conversion. When you coerce a time-series object to a tibble, you are essentially restructuring the data from its specialized time-series format into a standard, tidy table format. This conversion typically involves:
+
+#Creating a column for the time or date index.
+#Creating one or more columns for the data values.
+
+#For example, a time-series object might be a vector with a hidden time attribute. Coercing it to a tibble would create a two-column tibble: one column for the date/time and another for the data values. This makes it much more straightforward to perform operations like filtering by date, summarizing data, or creating visualizations using ggplot2.
+```
+
+Cambiamos de nombre a las columnas del objeto "sim.wgts"
+```{r}
+colnames(sim.wgts1)<-colnames(subassets)
+```
+
+Combinamos el objeto de "sim.wgts" con "valores.portafolio" (juntar ambos data sets)
+```{r}
+all.portfolios<-tk_tbl(cbind(sim.wgts1,valores.portafolio)) # Take a sequence of vector, matrix or data-frame arguments and combine by columns or rows, respectively
+```
+
+```{r}
+head(all.portfolios)
+```
+
+## Portafolio de Mínima Varianza y Máximo Sharpe.
+El portafolio de mínima varianza es aquel con el menor valor de la desviación estándar (riesgo).
+```{r}
+minvar.port<-valores.portafolio[which.min(valores.portafolio$Riesgo),]
+maxsr.port<-valores.portafolio[which.max(valores.portafolio$Sharpe),]
+minvar.port
+maxsr.port
+```
+
+## Frontera Eficiente
+```{r,frontier}
+p <- valores.portafolio %>% #The %>% symbol in R Studio is the PIPE OPERATOR. 
+                            #It's used to chain together multiple operations, sending the result of one function as the first argument of the next function.
+  ggplot(aes(x = Riesgo, y = Rendimiento, color = Sharpe)) +
+  geom_point() +
+  theme_classic() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = 'Riesgo Anualizado',
+       y = 'Rendimiento Anualizado',
+       title = "Optimización de Portafolio y Frontera Eficiente") +
+  geom_point(aes(x = Riesgo,
+                 y = Rendimiento), data = minvar.port, color = 'red') +
+  geom_point(aes(x = Riesgo,
+                 y = Rendimiento), data = maxsr.port, color = 'red')
+ggplotly(p)
+```
+
+# Portafolios con restricciones. Camino Corto
+Con la siguiente instrucción guardamos en un objeto el número de columnas del objeto "subassets" ya que usaremos dicho dato en la simulación para conformar "n" portafolios.
+```{r}
+num_assets<-ncol(subassets)
+num_assets
+```
+
+Creamos los subgrupos de activos según clasificados por renta variable y renta fija
+```{r}
+variable.select<-c("SHELL","NIKE","FORD","SAM","DELL","AMAZON","MARVEL")
+variable.subassets<-ret.assets[,variable.select]
+```
+
+```{r}
+fija.select<-c("GOVT","TLT")
+fija.subassets<-ret.assets[,fija.select]
+```
+
+
+# Construcción del portafolio de Mínima Varianza
+
+## Creacion del portafolio y agregar Restricciones del portafolio
+
+```{r}
+port_min_var<-PortfolioAnalytics::portfolio.spec(assets=num_assets)
+
+port_min_var<-PortfolioAnalytics::add.constraint(portfolio = port_min_var,
+                                      type = "full_investment") # full_investment: Special case to set min_sum=1 and max_sum=1 of weight sum constraints
+
+port_min_var<-PortfolioAnalytics::add.constraint(portfolio = port_min_var,
+                                      type = "box", # box: box constraints for the individual asset weights, see box_constraint
+                                      min=0.01,max=0.30)
+
+port_min_var<- PortfolioAnalytics::add.constraint(portfolio = port_min_var, 
+                                      type="group", # group: specify the sum of weights within groups and the number of assets with non-zero weights in groups
+                                      groups= list(c(variable.subassets),c(fija.subassets)),
+                                      group_min=c(0.00,0.00),
+                                      group_max=c(0.9,0.1)
+                                      )
+
+port_min_var<-PortfolioAnalytics::add.objective(portfolio = port_min_var,
+                                                type = "risk",
+                                                name = "StdDev")
+
+```
+
+## Optimización del Portafolio de minima varianza
+```{r}
+# ROI: R Optimization Infrastructure, se refiere al conjunto de métodos matemáticos que optimizan la solución de un problema
+port_min_global<-PortfolioAnalytics::optimize.portfolio(subassets,
+                                                        portfolio = port_min_var,
+                                                        optimize_method = "ROI",
+                                                        trace = TRUE) # if TRUE will attempt to return additional information on the path or portfolios searched
+port_min_global
+```
+
+### Validación de las proporciones (weights)
+Visualizamos las proporciones (weights)
+minimo y maximo weights fueron establecidos arriba
+
+```{r}
+#chart.Weights(port_min_global)
+
+chart.Weights(
+  port_min_global,
+  neighbors = NULL,
+  main = "Weights",
+  las = 0,
+  xlab = NULL,
+  cex.lab = 0.8,
+  element.color = "darkgray",
+  cex.axis = 0.8,
+  colorset = NULL,
+  legend.loc = "topright",
+  cex.legend = 0.8,
+  plot.type = "barplot" # can be "line"
+)
+```
+
+Extraemos la desviación estándar
+```{r}
+risk_minVar<-port_min_global[["objective_measures"]][["StdDev"]]
+risk_minVar
+```
+
+Anualizamos los valores
+```{r}
+risk_minVar_annual<-risk_minVar*sqrt((252))
+risk_minVar_annual
+```
+
+## Confirmar que proporciones sumen 1
+
+Guardamos en un objeto las proporciones
+```{r}
+opt.wghts<-matrix(extractWeights(port_min_global))
+opt.wghts
+```
+
+```{r}
+sum(opt.wghts)
+```
+
+## Rendimiento del portfolio de mínima varianza
+Multiplicamos las proporciones óptimas por el rendimiento promedio de cada activo que conforma el portafolio óptimo y anualizamos el rendimiento diario:
+
+```{r}
+expected.mean<-(colMeans(subassets)%*%opt.wghts)*252
+expected.mean
+```
+
+# Portafolio de Máximo rendimiento Sharpe Ratio
+## Restricciones del portafolio
+```{r}
+port_mean<-PortfolioAnalytics::portfolio.spec(assets=num_assets)
+
+port_mean<-PortfolioAnalytics::add.constraint(portfolio = port_mean,
+                                      type = "full_investment")
+
+port_mean<-PortfolioAnalytics::add.constraint(portfolio = port_mean,
+                                      type = "box",
+                                      min=0.01,max=0.30)
+
+port_mean<- PortfolioAnalytics::add.constraint(portfolio = port_mean, 
+                                      type="group",
+                                      groups= list(c(variable.subassets),c(fija.subassets)),
+                                      group_min=c(0.00,0.00),
+                                      group_max=c(0.90,0.10)
+                                      )
+
+port_mean<-PortfolioAnalytics::add.objective(portfolio = port_mean,
+                                                type = "return",
+                                                name = "mean")
+
+port_mean<-PortfolioAnalytics::add.objective(portfolio = port_mean,
+                                                type = "risk",
+                                                name = "StdDev")
+
+```
+
+```{r}
+port_maxSR <- PortfolioAnalytics::optimize.portfolio(subassets, portfolio=port_mean, 
+                                   optimize_method="ROI", 
+                                   maxSR=TRUE, # Maximizar el SR
+                                   trace=TRUE)
+port_maxSR
+```
+
+Visualizamos las proporciones
+```{r}
+#chart.Weights(port_maxSR)
+
+chart.Weights(
+  port_maxSR,
+  neighbors = NULL,
+  main = "Weights",
+  las = 0,
+  xlab = NULL,
+  cex.lab = 0.8,
+  element.color = "darkgray",
+  cex.axis = 0.8,
+  colorset = NULL,
+  legend.loc = "topright",
+  cex.legend = 0.8,
+  plot.type = "barplot" # can be "line"
+)
+```
+
+
+Extraemos la desviación estándar y la media
+```{r}
+risk_maxSR<-port_maxSR[["objective_measures"]][["StdDev"]]
+risk_maxSR
+mean_maxSR<-port_maxSR[["objective_measures"]][["mean"]]
+mean_maxSR
+```
+
+Anualizamos los valores
+```{r}
+risk_maxSR_annual<-risk_maxSR*sqrt((252))
+mean_maxSR_annual<-mean_maxSR*252
+risk_maxSR_annual
+mean_maxSR_annual
+```
+
+
+
+## Frontera Eficiente sobre el Portafolio original
+
+Pero ahora con Portafolios de Minima Varianza y Maximo SR que usan Renta Fija y Renta Variable
+```{r,frontier}
+p <- valores.portafolio %>%
+  ggplot(aes(x = Riesgo, y = Rendimiento, color = Sharpe)) +
+  geom_point() +
+  theme_classic() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = 'Riesgo Anualizado',
+       y = 'Rendimiento Anualizado',
+       title = "Portafolio y Frontera Eficiente OPTIMIZADOS para MinVar y MaxSR Incluyendo Renta Fija y Variable") +
+  geom_point(aes(x = Riesgo,
+                 y = Rendimiento), data = minvar.port, color = 'red') +
+  geom_point(aes(x = Riesgo,
+                 y = Rendimiento), data = maxsr.port, color = 'red') +
+  geom_point(aes(x = risk_maxSR_annual,
+                 y = mean_maxSR_annual), color = 'blue') + # MaxSR
+  geom_point(aes(x = risk_minVar_annual,
+                 y = expected.mean), color = 'green')   # minVar
+ggplotly(p)
+```

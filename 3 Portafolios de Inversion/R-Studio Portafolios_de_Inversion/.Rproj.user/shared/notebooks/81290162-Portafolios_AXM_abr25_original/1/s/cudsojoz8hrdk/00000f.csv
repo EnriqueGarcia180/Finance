@@ -1,0 +1,2 @@
+"0","hist.shell <- hist(ret.assets$SHELL, breaks = 40, main = ""Histograma con curva normal"","
+"0","          cex.main=0.8,cex.axis=0.8,xlab = ""Shell%"",ylab = ""Histograma"",cex.lab=0.8)"

@@ -1,0 +1,6 @@
+"0","# Esta función calcula el valor promedio por columna."
+"0","assets.mean<-round(colMeans(subassets),6)"
+"0","assets.mean"
+"1","    SHELL      NIKE      FORD       SAM      GOVT 
+ 0.000177 -0.000200 -0.000539 -0.000170 -0.000030 
+"

@@ -1,0 +1,4 @@
+"0","sim.wgts1<-tk_tbl(sim.wgts)"
+"2","G2;H2;Warningh in tk_tbl.data.frame(as.data.frame(data), preserve_index, rename_index,  :
+  Warning: No index to preserve. Object otherwise converted to tibble successfully.g
+"

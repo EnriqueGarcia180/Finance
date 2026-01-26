@@ -1,0 +1,7 @@
+"0","# Government ETFs: GOVT (1-30Y), TLT- (20Y+), IBTA (1-3Y), IEF (7-10Y), IEI (3-7Y), SHY (1-3Y)."
+"0",""
+"0","getSymbols(Symbols= c(""SHEL"",""CVX"",""BKR"",""NKE"",""SAM"",""FORD"",""GOOG"",""DELL"",""AMZN"",""MRVL"",""GOVT"",""TLT"",""IBTA.L"",""IEF"",""IEI"",""SHY""), from=""2020-01-01"",to=""2024-12-31"", "
+"0","           periodicity = ""daily"", src = ""yahoo"")"
+"1"," [1] ""SHEL""   ""CVX""    ""BKR""    ""NKE""    ""SAM""    ""FORD""   ""GOOG""   ""DELL""   ""AMZN""   ""MRVL""   ""GOVT""  
+[12] ""TLT""    ""IBTA.L"" ""IEF""    ""IEI""    ""SHY""   
+"

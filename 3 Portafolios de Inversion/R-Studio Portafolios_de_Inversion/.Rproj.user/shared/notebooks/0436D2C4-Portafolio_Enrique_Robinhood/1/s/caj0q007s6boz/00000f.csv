@@ -1,0 +1,2 @@
+"0","all.portfolios<-tk_tbl(cbind(sim.wgts1,valores.portafolio), preserve_index = FALSE) "
+"0","# Take a sequence of vector, matrix or data-frame arguments and combine by columns or rows, respectively"

@@ -1,0 +1,10 @@
+"0","risk_maxSR_annual<-risk_maxSR*sqrt((252))"
+"0","mean_maxSR_annual<-mean_maxSR*252"
+"0","risk_maxSR_annual"
+"1","   StdDev 
+0.2018971 
+"
+"0","mean_maxSR_annual"
+"1","        mean 
+-0.007603626 
+"

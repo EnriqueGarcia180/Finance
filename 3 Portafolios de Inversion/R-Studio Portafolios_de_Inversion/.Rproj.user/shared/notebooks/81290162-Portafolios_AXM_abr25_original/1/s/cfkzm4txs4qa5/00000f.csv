@@ -1,0 +1,2 @@
+"0","# Imputar valores NA usando interpolacion (spline in this case)"
+"0","prices.in<-na_interpolation(rawprices,option=""spline"")"

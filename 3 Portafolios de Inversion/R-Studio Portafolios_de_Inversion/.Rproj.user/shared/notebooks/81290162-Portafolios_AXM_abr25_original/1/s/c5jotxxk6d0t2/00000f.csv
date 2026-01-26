@@ -1,0 +1,4 @@
+"0","# Construimos un objeto llamado ret.assets (ret: return) en donde almacenamos los cambios porcentuales de los precios (utilizando el enfoque log) o Logatitmic Return"
+"0","# diff, son primeras diferencias: P(1) - P(0)"
+"0","#calculates the continuous, or logarithmic, returns of an asset and removes any missing values from the result. "
+"0","ret.assets<-na.omit(diff(log(prices.in)))"

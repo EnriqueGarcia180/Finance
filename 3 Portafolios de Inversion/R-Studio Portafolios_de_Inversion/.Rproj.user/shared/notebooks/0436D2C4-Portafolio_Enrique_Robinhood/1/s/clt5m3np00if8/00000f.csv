@@ -1,0 +1,4 @@
+"0","# ""nclass"" numero de clases (k o bins)"
+"0","k_sturges <- nclass.Sturges(ret.assets[,1]) # Adecuada para pocos datos, pero no en distribuciones muy asimétricas."
+"0","k_scott <- nclass.scott(ret.assets[,1])     # Adecuada para distribuciones normales con datos grandes."
+"0","k_freedman <- nclass.FD(ret.assets[,1])     # Adecuada si hay valores atípicos o datos sesgados."

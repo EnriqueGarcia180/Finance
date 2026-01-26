@@ -1,0 +1,2 @@
+"0","fija.select<-c(""GOVT"",""TLT"")"
+"0","fija.subassets<-ret.assets[,fija.select]"

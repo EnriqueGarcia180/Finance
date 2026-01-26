@@ -1,0 +1,248 @@
+---
+title: "Forwards"
+output: html_notebook
+---
+
+# Precio Teorico del Contrato Forward
+
+```{r}
+s0 = 2000
+r = 0.10 # tasa de plusvalia
+t = 60 # tiempo en dias
+
+# Opcion 1: Modelo de Interes Simple
+Ft_simple = s0*(1+r*t/360)
+
+# Opcion 2: Modelo con Interes Compuesto
+Ft_compuesto = s0*(1+r)^(t/360)
+
+# Opcion 3: Modelo con Interes Continuo
+Ft_continuo = s0*exp(r*t/360)
+
+cat(Ft_simple, Ft_compuesto, Ft_continuo)
+```
+# Riesgo Base de los Forwards
+```{r}
+s0 = 20
+r = 0.30
+t = seq(1, 90, by=1)
+set.seed(600)
+P_contado = s0*(1+runif(90,0,1)/100)
+Ft = P_contado*exp(r*t/360) # Precios desde 1 hasta 90 dias. Precio Futuro
+riesgo_base = Ft - P_contado
+plot(x=t, y=riesgo_base, type="b", col = "black", main="Riesgo Base")
+
+plot(x=t, y=P_contado, type="b", col = "blue", ylim = c(min(P_contado, Ft), max(P_contado, Ft)), main="Riesgo Base")
+lines(x=t, y=Ft, type="b", col="red")
+abline(v=90, col="black")
+```
+
+
+
+# Commodity Forwards
+
+Calculadora del Precio Teorico de un Commodity Forward
+
+```{r}
+# Costo de acarreo como porcentaje
+s0 = 1000
+r = 0.05 # tasa de plusvalia
+a = 0.02 # costo de acarreo
+t = 90 # dias
+Ft_simple = s0*(1+(r+a)*t/360) # /360 para obteber la tasa efectiva por periodo
+Ft_compuesto = s0*(1+r+a)^(t/360)
+Ft_continuo = s0*exp((r+a)*t/360)
+cat("Costo de acarreo como porcentaje:", Ft_simple, Ft_compuesto, Ft_continuo)
+
+# propuesta SIN costo de acarreo, a=0.0
+s0 = 1000
+r = 0.05 # tasa de plusvalia
+a = 0.0 # costo de acarreo
+t = 90 # dias
+Ft_simple = s0*(1+(r+a)*t/360)
+Ft_compuesto = s0*(1+r+a)^(t/360)
+Ft_continuo = s0*exp((r+a)*t/360)
+cat("Sin Costo de acarreo:", Ft_simple, Ft_compuesto, Ft_continuo)
+
+# Costo de acarreo como Cantidad Monetaria
+s0 = 1000
+r = 0.05 # tasa de plusvalia
+a = 100 # $ Cantidad Monetaria, costo de acarreo
+i = 0.10 # tasa de interes del mercado del commodity (i.e. tasa de la FED , tasa del Banco de Mexico) para el crecimiento del valor del dinero
+t = 90 # dias
+Ft_simple = s0*(1+(r)*t/360)+a*(1+i*t/360)
+Ft_compuesto = s0*(1+r)^(t/360)+a*(1+i)^(t/360)
+Ft_continuo = s0*exp((r)*t/360)+a*exp(i*t/360)
+cat("Costo de acarreo como Cantidad Monetaria:", Ft_simple, Ft_compuesto, Ft_continuo)
+```
+
+# Caso de Estudio: Forward sobre el precio del petroleo
+Precio de la mezcla mexicana de petroleo
+https://www.banxico.org.mx/apps/gc/precios-spot-del-petroleo-gra.html
+
+Pronostico del precio en los proximos 6 meses
+
+1. Mediante modelos de series de tiempo
+2. Machine Learning: Arima, SArima, Arch, Garcha, SVM, Neural Network
+
+```{r}
+#Librerias
+library(tseries) #Modelos de series de tiempo
+library(forecast) #predicción de modeos
+library(nortest) #pruebas de bondad de ajuste
+library(readxl) # abrir archivos de excel
+library(ggfortify) #gráficos series de tiempo
+```
+
+```{r}
+#Notas: Modelos de series de tiempo:
+#Auto Regresores (AR) -> Medias Moviles (MA) -> ARIMA (combina los anteriores) -> S_ARIMA (incorporan estacionalidad) -> ARCH (incorporan volatilodad) -> GARCH (mas completo)
+
+# Carga de datos
+ruta = "C:/Users/egarcia/Desktop/AXM_Courses/Finance/5 Forwards y Swaps/2 - A5 Commodity Forward.xlsx"
+datos = read_excel(ruta, sheet="Petroleo")
+
+# Paso 1. Convertir los datos a series de tiempo
+m = 121 # punto de partida para la serie (para tener datos mas cercanos al tiempo actual, por lo tanto mas adecuados para el calculo)
+n = length(datos$MM_USD) # punto final para la serie
+serie1 = ts(datos$MM_USD[m:n], start = c(2015,1), frequency = 12)
+autoplot(serie1)
+
+# Paso 2. Comprobar Estacionariedad
+# p valor > 5% (valor de significancia) la serie NO es estacionaria
+# p valor < 0.05 la serie SI es estacionaria
+# Logaritmo
+serie1_log = log(serie1)
+autoplot(serie1_log)
+adf.test(serie1_log, alternative = "stationary") # Augmented Dickey-Fuller Test
+# dado que p-value = 0.2935 > 0.05, la serie NO es estacionaria
+
+# Diferencias con el t-1
+serie1_dif1 = diff(serie1, differences = 1)
+autoplot(serie1_dif1)
+adf.test(serie1_dif1, alternative = "stationary")
+# dado que p-value = 0.01 < 0.05, la serie SI es estacionaria
+
+# Diferencias con el t-2
+serie1_dif2 = diff(serie1, differences = 2)
+autoplot(serie1_dif2)
+adf.test(serie1_dif2, alternative = "stationary")
+# dado que p-value = 0.01 < 0.05, la serie SI es estacionaria
+# Dickey-Fuller = -7.3979 es mas estacionaria que con 1 diferencia
+
+
+# Paso 3. Determinar los Autoregresores y Promedios Moviles
+par(mfrow=c(2,1))
+#autocorrelacion (el primer valor es 1, es la autocorrelacion consigo misma. Las Lineas azules son el nivel de significancia)
+acf(serie1_dif1, lag.max = 50) #determinar parametros de MA (Medias moviles)
+pacf(serie1_dif1, lag.max = 50) #determinar parametros de los Autoregresores (AR)
+
+# una media movil (arriba) con uno o dos autoregresores (abajo: dos valores fuera de los niveles de significancia)
+
+# Se propone:
+# MA: q=1 y AR: p=1 o 2. Dif: d=1
+# ARIMA(p,d,q)
+#   p: autoreresor
+#   d: diferencia
+#   q: media movil
+
+# Paso 4: Propuesta del modelo
+modelo1 = arima(serie1, order = c(1,1,1))
+modelo2 = arima(serie1, order = c(2,1,1))
+modelo3 = arima(serie1, order = c(1,1,0))
+
+# Paso 5. Seleccion del Modelo
+# Criterio de seleccion de Acaike, Modelo de Seleccion Bayesiano
+AIC(modelo1, modelo2, modelo3)
+# seleccionar el modelo con un menor criterio de informacion
+
+# Paso 6. Validacion del Modelo
+# Pruebas para confirmar que los residuos sean normales, y no exista una autocorrelacion
+# prueba de hipotesis box.test()
+# H0: No hay Autocorrelacion
+
+# p-valor > 0.05: No se rechaza H0 no hay evidencia de autocorrelación, 
+# los residuos parecen ruido blanco el modelo se ajusta bien.
+
+# p-valor < 0.05: Se rechaza H0 hay autocorrelación significativa 
+# en los residuo, el modelo no captura toda la estructura temporal.
+
+Box.test(modelo1$residuals, type = "Ljung-Box") #prueba de autocorrelacion
+tsdiag(modelo1)
+# p-value = 0.9633 > 0.05: No se rechaza H0 no hay evidencia de autocorrelación,
+
+
+# Paso 7. Pronostico del Modelo
+pronostico = forecast(modelo1, h=6) # en los proximos 6 meses
+pronostico
+autoplot(pronostico)
+plot(pronostico)
+# tomamos una muestra muy grande de 10 anios, por eso la apertura tan grande.
+
+# Paso Extra: Pronostico de Diferentes Modelos
+modelo4 = auto.arima(serie1) # genera muchos modelos ARIMA ocn varias combinaciones de p,d,q
+# resultado: ARIMA(0,1,1) autorregresores, diferencia, media movil
+pronostico2 = forecast(modelo4, h=6)
+pronostico2
+autoplot(pronostico2)
+plot(pronostico2)
+
+
+# Paso 8. Propuesta de Precio Forward con modelo ARIMA en 6 meses (mas elegante y elaborado que el Precio Teorico, abajo)
+Ft_ARIMA = pronostico$mean[6] # En 6 meses
+Ft_ARIMA # 65.25275
+
+# Precio Teorico con tasa de plusvalia
+datos$Rend = NA
+for(k in 2:n){
+  datos$Rend[k] = datos$MM_USD[k]/datos$MM_USD[k-1]-1
+}
+r = mean(datos$Rend[m:n]) # tasa mensual
+t = 6
+Ft_Teorico = datos$MM_USD[n]*exp(r*t) # ultimo precio del subyacente, traido al dia de hoy
+Ft_Teorico # 69.70614
+
+# Comparativo de Modelos
+cat(Ft_ARIMA, Ft_Teorico)
+
+# a ver lanzo mi propuesta en $67, esperando una contraparte que quiera entrarle a mi propuesta.
+
+```
+
+# Equity Forward
+
+Pago de Dividendos de Forma Continua
+```{r}
+s0 = 60
+acciones = 100
+r = 0.05 # tasa de plusvalia (risk free en los libros)
+d = 0.02 # tasa de dividendo (de los estados financieros, bloomberg)
+t = 90 # dias
+# r-d: descontarle de manera anticipada el dividendo al vendedor porque en el contrato le estamos dejando el dividendo al vendedor
+Ft_simple = s0*acciones*(1+(r-d)*t/360)
+Ft_compuesto = s0*acciones*(1+(r-d))^(t/360)
+Ft_continuo = s0*acciones*exp((r-d)*t/360)
+cat(Ft_simple, Ft_compuesto, Ft_continuo)
+```
+Pago de Dividendos de Forma Discreta
+```{r}
+s0 = 60
+acciones = 100
+r = 0.05 # tasa de plusvalía (risk free en los libros)
+d = 1 # $ monto del Dividendo
+i = 0.10 # tasa de interes para valorizar el dinero en tiempo futuro
+t = 90 # dias
+td = 30 # periodo del pago del dividendo
+Ft_simple = s0*acciones*(1+(r)*t/360)-d*acciones*(1+i*(t-td)/360)
+Ft_compuesto = s0*acciones*(1+(r))^(t/360)-d*acciones*(1+i)^((t-td)/360)
+Ft_continuo = s0*acciones*exp((r)*t/360)-d*acciones*exp(i*(t-td)/360)
+cat(Ft_simple, Ft_compuesto, Ft_continuo)
+```
+# Sesion 3
+# Caso de estudio. Forward sobre el precio de acciones
+# Proceso estocastico de Norbert Weiner
+
+como hacer curvas de tasas de interes
+bootstrapping
+splines
+para evaluacion de FX-SWAP

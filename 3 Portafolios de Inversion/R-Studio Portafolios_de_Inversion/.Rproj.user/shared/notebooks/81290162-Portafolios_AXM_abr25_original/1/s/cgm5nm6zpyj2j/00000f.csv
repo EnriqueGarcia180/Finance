@@ -1,0 +1,6 @@
+"0","var.port<-(wgts%*%cov.port)%*%(wgts)"
+"0","risk.port<-sqrt(var.port*252)"
+"0","risk.port"
+"1","          [,1]
+[1,] 0.2733832
+"

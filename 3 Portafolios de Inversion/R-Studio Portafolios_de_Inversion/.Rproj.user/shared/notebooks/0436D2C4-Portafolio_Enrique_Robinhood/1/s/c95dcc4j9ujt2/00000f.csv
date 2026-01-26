@@ -1,0 +1,2 @@
+"0","variable.select<-Robinhood#c(""SHELL"",""NIKE"",""FORD"",""SAM"",""DELL"",""AMAZON"",""MARVEL"")"
+"0","variable.subassets<-ret.assets[,variable.select]"

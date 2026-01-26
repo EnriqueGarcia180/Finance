@@ -1,0 +1,2 @@
+"0","# Price and Returns of the SECOND asset in the list"
+"0","plot(prices.in[,2], main=paste(""Adj. Prices: "",names(prices.in)[2])) "

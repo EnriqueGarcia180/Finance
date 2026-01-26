@@ -1,0 +1,8 @@
+"0","lillie.test(ret.assets$FORD)"
+"1","
+	Lilliefors (Kolmogorov-Smirnov) normality test
+
+data:  ret.assets$FORD
+D = 0.99609, p-value < 2.2e-16
+
+"

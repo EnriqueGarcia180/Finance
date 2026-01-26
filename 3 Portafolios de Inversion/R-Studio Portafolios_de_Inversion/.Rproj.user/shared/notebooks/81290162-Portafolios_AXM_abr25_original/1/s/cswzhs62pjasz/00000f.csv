@@ -1,0 +1,34 @@
+"0","shellprice.ur<-ur.df(prices.in$SHELL,type = ""none"")"
+"0","summary(shellprice.ur)"
+"1","
+############################################### 
+# Augmented Dickey-Fuller Test Unit Root Test # 
+############################################### 
+
+Test regression none 
+
+
+Call:
+lm(formula = z.diff ~ z.lag.1 - 1 + z.diff.lag)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.8200 -0.4332  0.0125  0.4842  4.2668 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+z.lag.1    5.493e-05  4.856e-04   0.113    0.910
+z.diff.lag 1.466e-02  2.792e-02   0.525    0.599
+
+Residual standard error: 0.8438 on 1283 degrees of freedom
+Multiple R-squared:  0.000227,	Adjusted R-squared:  -0.001331 
+F-statistic: 0.1457 on 2 and 1283 DF,  p-value: 0.8645
+
+
+Value of test-statistic is: 0.1131 
+
+Critical values for test statistics: 
+      1pct  5pct 10pct
+tau1 -2.58 -1.95 -1.62
+
+"

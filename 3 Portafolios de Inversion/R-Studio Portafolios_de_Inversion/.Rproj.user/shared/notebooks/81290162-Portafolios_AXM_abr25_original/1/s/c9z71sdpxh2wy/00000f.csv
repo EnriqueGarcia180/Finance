@@ -1,0 +1,28 @@
+"0","port_maxSR <- PortfolioAnalytics::optimize.portfolio(subassets, portfolio=port_mean, "
+"0","                                   optimize_method=""ROI"", "
+"0","                                   maxSR=TRUE, "
+"0","                                   trace=TRUE)"
+"0","port_maxSR"
+"1","***********************************
+PortfolioAnalytics Optimization
+***********************************
+
+Call:
+PortfolioAnalytics::optimize.portfolio(R = subassets, portfolio = port_mean, 
+    optimize_method = ""ROI"", trace = TRUE, maxSR = TRUE)
+
+Optimal Weights:
+SHELL  NIKE  FORD   SAM  GOVT 
+ 0.30  0.09  0.01  0.30  0.30 
+
+Objective Measure:
+ StdDev 
+0.01272 
+
+
+      mean 
+-3.017e-05 
+
+
+
+"

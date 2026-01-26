@@ -1,0 +1,5 @@
+"0",""
+"0","# Sub set del portafolio original"
+"0","assets_select <-c(""SHELL"",""NIKE"",""FORD"",""SAM"",""GOVT"")"
+"0","# Returns"
+"0","subassets<-ret.assets[,assets_select]"

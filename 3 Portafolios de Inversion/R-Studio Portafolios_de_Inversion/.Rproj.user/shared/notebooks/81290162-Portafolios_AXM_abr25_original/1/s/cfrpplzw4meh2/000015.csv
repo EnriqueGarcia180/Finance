@@ -1,0 +1,1 @@
+"0","lines(ret.assets[,2],type=""h"",on=NA,col=""blue"", main=paste(""Returns: "",names(ret.assets)[2]))"

@@ -1,0 +1,5 @@
+"0","df_final = data.frame()"
+"0","df_final = cbind(Robinhood_current_df, posiciones_maxSR_df)"
+"0","df_final <- df_final[, !duplicated(names(df_final))] #remove duplicated last AdjPrice column"
+"0","df_final[""Long/Short""] = df_final[""maxSR QTY""] - df_final[""Current QTY""]"
+"0","df_final"

@@ -1,0 +1,4 @@
+"0","all.portfolios<-tk_tbl(cbind(sim.wgts1,valores.portafolio))"
+"2","G2;H2;Warningh in tk_tbl.data.frame(cbind(sim.wgts1, valores.portafolio)) :
+  Warning: No index to preserve. Object otherwise converted to tibble successfully.g
+"

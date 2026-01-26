@@ -1,0 +1,36 @@
+"0","govt.ur<-ur.df(ret.assets$GOVT,type = ""none"")"
+"0","summary(govt.ur)"
+"1","
+############################################### 
+# Augmented Dickey-Fuller Test Unit Root Test # 
+############################################### 
+
+Test regression none 
+
+
+Call:
+lm(formula = z.diff ~ z.lag.1 - 1 + z.diff.lag)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.0230118 -0.0023390 -0.0000791  0.0021398  0.0212832 
+
+Coefficients:
+           Estimate Std. Error t value Pr(>|t|)    
+z.lag.1    -1.11172    0.03939 -28.224  < 2e-16 ***
+z.diff.lag  0.10549    0.02777   3.799 0.000152 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.003853 on 1282 degrees of freedom
+Multiple R-squared:  0.5082,	Adjusted R-squared:  0.5074 
+F-statistic: 662.3 on 2 and 1282 DF,  p-value: < 2.2e-16
+
+
+Value of test-statistic is: -28.2237 
+
+Critical values for test statistics: 
+      1pct  5pct 10pct
+tau1 -2.58 -1.95 -1.62
+
+"

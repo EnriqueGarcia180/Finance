@@ -1,0 +1,2 @@
+"0","hist_first <- hist(ret.assets[,1], breaks = 40, main = paste(""Histograma con curva normal:"", names(ret.assets)[1]),"
+"0","          cex.main=0.8,cex.axis=0.8,xlab = paste(""Returns "", names(ret.assets)[1],""%""),ylab = ""Frecuencia"",cex.lab=0.8)"

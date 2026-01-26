@@ -1,0 +1,4 @@
+"0",""
+"0","df_final = cbind.data.frame(posiciones_maxSR_df, Robinhood_current_df[,-1])"
+"0","df_final[""Long/Short""] = df_final[""maxSR QTY""] - df_final[""Current QTY""]"
+"0","df_final"

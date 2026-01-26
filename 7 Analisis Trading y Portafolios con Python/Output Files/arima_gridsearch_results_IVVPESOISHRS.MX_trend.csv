@@ -1,0 +1,271 @@
+order,p,d,q,trend_req,trend_used,AIC,RMSE_test,MSE_test,status,error
+"(1,0,0)",1,0,0,t,t,2826.131529435797,2.4213478869946976,5.862925589853687,OK,
+"(3,0,0)",3,0,0,t,t,2814.791259282949,2.4427393054408575,5.9669753143456825,OK,
+"(3,0,1)",3,0,1,t,t,2816.468518002302,2.4570851715676563,6.037267540337658,OK,
+"(1,0,2)",1,0,2,t,t,2815.286538770268,2.4579514190610294,6.041525178464128,OK,
+"(2,0,2)",2,0,2,t,t,2817.458362761689,2.461146727482313,6.057243214196897,OK,
+"(2,0,1)",2,0,1,t,t,2816.542920105522,2.469032442284956,6.096121201055616,OK,
+"(2,0,0)",2,0,0,t,t,2815.409680614805,2.505424880298758,6.277153830820046,OK,
+"(1,0,1)",1,0,1,t,t,2815.878486207933,2.5145513986622636,6.322968736514346,OK,
+"(4,0,0)",4,0,0,t,t,2812.4603082445446,2.5363517073800637,6.4330799835297645,OK,
+"(5,0,1)",5,0,1,t,t,2808.242220078415,2.6494927011744824,7.019811573576855,OK,
+"(5,0,0)",5,0,0,t,t,2807.592913447389,2.743282646111461,7.5255996764563,OK,
+"(4,0,1)",4,0,1,t,t,2812.4279525178326,2.7746543586786596,7.698706810134483,OK,
+"(5,0,2)",5,0,2,t,t,2810.155815953408,2.7768148546584883,7.710700737052043,OK,
+"(4,0,2)",4,0,2,t,t,2813.72162596168,2.780557481611252,7.731499908544308,OK,
+"(3,0,2)",3,0,2,t,t,2821.3291322847444,3.7447448658545586,14.023114110344077,OK,
+"(3,0,0)",3,0,0,n,n,2816.82903393543,3.992762395660214,15.94215154819829,OK,
+"(3,0,0)",3,0,0,d,n,2816.82903393543,3.992762395660214,15.94215154819829,OK,
+"(2,0,1)",2,0,1,n,n,2818.530557261459,3.9944666911389373,15.955764146618451,OK,
+"(2,0,1)",2,0,1,d,n,2818.530557261459,3.9944666911389373,15.955764146618451,OK,
+"(3,0,1)",3,0,1,n,n,2818.518744537153,3.994490663452937,15.955955660412684,OK,
+"(3,0,1)",3,0,1,d,n,2818.518744537153,3.994490663452937,15.955955660412684,OK,
+"(1,0,0)",1,0,0,n,n,2827.847636942542,3.9987713175767223,15.990172050274275,OK,
+"(1,0,0)",1,0,0,d,n,2827.847636942542,3.9987713175767223,15.990172050274275,OK,
+"(2,0,2)",2,0,2,n,n,2820.138956738737,4.0057947571360275,16.046391636298488,OK,
+"(2,0,2)",2,0,2,d,n,2820.138956738737,4.0057947571360275,16.046391636298488,OK,
+"(4,0,1)",4,0,1,n,n,2817.9841388420964,4.010520191086906,16.084272203115752,OK,
+"(4,0,1)",4,0,1,d,n,2817.9841388420964,4.010520191086906,16.084272203115752,OK,
+"(2,0,0)",2,0,0,n,n,2817.4806492920943,4.012099934223187,16.0969458821937,OK,
+"(2,0,0)",2,0,0,d,n,2817.4806492920943,4.012099934223187,16.0969458821937,OK,
+"(5,0,2)",5,0,2,n,n,2814.63811451351,4.014218323430704,16.113948748166813,OK,
+"(5,0,2)",5,0,2,d,n,2814.63811451351,4.014218323430704,16.113948748166813,OK,
+"(1,0,2)",1,0,2,n,n,2817.3800144527377,4.014411452784155,16.115499312244587,OK,
+"(1,0,2)",1,0,2,d,n,2817.3800144527377,4.014411452784155,16.115499312244587,OK,
+"(4,0,0)",4,0,0,n,n,2814.5863428128737,4.0158248197413124,16.126848982850344,OK,
+"(4,0,0)",4,0,0,d,n,2814.5863428128737,4.0158248197413124,16.126848982850344,OK,
+"(5,0,1)",5,0,1,n,n,2811.5219430886127,4.021561904660855,16.172960153019446,OK,
+"(5,0,1)",5,0,1,d,n,2811.5219430886127,4.021561904660855,16.172960153019446,OK,
+"(1,0,1)",1,0,1,n,n,2817.9866350345283,4.024022345076773,16.19275583367717,OK,
+"(1,0,1)",1,0,1,d,n,2817.9866350345283,4.024022345076773,16.19275583367717,OK,
+"(3,2,1)",3,2,1,n,n,2819.307112228091,4.039658171318221,16.318838141098073,OK,
+"(5,0,0)",5,0,0,n,n,2809.432892040338,4.0506380008969884,16.407668214310753,OK,
+"(5,0,0)",5,0,0,d,n,2809.432892040338,4.0506380008969884,16.407668214310753,OK,
+"(4,2,2)",4,2,2,n,n,2813.8952229798897,4.056394796095098,16.454338741787396,OK,
+"(5,2,2)",5,2,2,n,n,2813.006645550886,4.067365370286808,16.543461055408343,OK,
+"(0,2,2)",0,2,2,n,n,2816.252463695717,4.080562609695194,16.650991211642452,OK,
+"(1,2,1)",1,2,1,n,n,2819.5223626624384,4.085600150614801,16.692128590703682,OK,
+"(5,2,1)",5,2,1,n,n,2813.3709485697636,4.086846960918146,16.702318081965892,OK,
+"(4,2,1)",4,2,1,n,n,2814.1826113973852,4.091877759037836,16.743463594908505,OK,
+"(2,2,1)",2,2,1,n,n,2821.1998670745284,4.0945521708376535,16.76535747971134,OK,
+"(2,2,2)",2,2,2,n,n,2818.5734407017117,4.101636611097425,16.823422889494772,OK,
+"(3,2,2)",3,2,2,n,n,2820.0674566537587,4.107432798642869,16.871004195367195,OK,
+"(1,2,2)",1,2,2,n,n,2816.129204338839,4.12466997218114,17.01290237941277,OK,
+"(3,0,2)",3,0,2,n,n,2819.6140469265792,4.138293551646159,17.125473519596177,OK,
+"(3,0,2)",3,0,2,d,n,2819.6140469265792,4.138293551646159,17.125473519596177,OK,
+"(4,0,2)",4,0,2,n,n,2818.6994256513085,4.229091681828529,17.885216453311255,OK,
+"(4,0,2)",4,0,2,d,n,2818.6994256513085,4.229091681828529,17.885216453311255,OK,
+"(1,0,1)",1,0,1,c,c,2819.976767312543,4.238436842776717,17.964346870207063,OK,
+"(0,2,1)",0,2,1,n,n,2826.9907062144775,4.392195993135239,19.291385642113248,OK,
+"(4,0,0)",4,0,0,ct,ct,2812.9650469457556,4.4261303442372135,19.590629824177434,OK,
+"(2,0,2)",2,0,2,ct,ct,2816.7846970955275,4.459499001245578,19.887131342110305,OK,
+"(1,0,1)",1,0,1,ct,ct,2816.3054800633345,4.47783597788942,20.0510150448809,OK,
+"(3,0,0)",3,0,0,ct,ct,2815.044712972982,4.569642225063678,20.881630065084924,OK,
+"(2,1,1)",2,1,1,t,t,2818.3806831363872,4.619656541029114,21.341226557073078,OK,
+"(1,1,2)",1,1,2,t,t,2816.399099960043,4.6204111540290205,21.348199232275782,OK,
+"(0,1,0)",0,1,0,t,t,2825.162437057744,4.626274026262724,21.402411366073114,OK,
+"(2,1,0)",2,1,0,t,t,2816.831927695207,4.627311552973458,21.412012208281634,OK,
+"(1,1,1)",1,1,1,t,t,2816.3807478123463,4.629703133612679,21.434151105383062,OK,
+"(0,1,2)",0,1,2,t,t,2815.3150900709043,4.632763952859479,21.46250184291419,OK,
+"(5,1,1)",5,1,1,t,t,2808.900037693738,4.64854323665804,21.608954223079206,OK,
+"(1,1,0)",1,1,0,t,t,2817.5100696160753,4.6603139293779225,21.718525920353894,OK,
+"(0,1,1)",0,1,1,t,t,2815.9869226413184,4.669446538495289,21.803730975865633,OK,
+"(3,1,0)",3,1,0,t,t,2814.638307351989,4.674710158560021,21.852915066544263,OK,
+"(4,1,1)",4,1,1,t,t,2810.3005710886027,4.698448021786027,22.075413813425033,OK,
+"(5,1,0)",5,1,0,t,t,2809.3808545649954,4.7011408889539155,22.10072565779441,OK,
+"(4,1,0)",4,1,0,t,t,2809.5244353368557,4.740689641695976,22.474138278883522,OK,
+"(5,1,2)",5,1,2,t,t,2810.8428540964405,4.754011858355289,22.60062874938271,OK,
+"(2,1,2)",2,1,2,t,t,2816.8856867455497,4.780424306961733,22.85245655459057,OK,
+"(3,1,1)",3,1,1,t,t,2814.4581706914855,4.789662604643316,22.940867866318587,OK,
+"(4,1,2)",4,1,2,t,t,2811.062598659574,4.790514934784693,22.949033340395196,OK,
+"(3,1,2)",3,1,2,t,t,2815.7648324793704,4.790826982159401,22.952023172986557,OK,
+"(5,0,2)",5,0,2,ct,ct,2812.538643621712,5.768093235825547,33.27089957717643,OK,
+"(5,0,1)",5,0,1,c,c,2814.7939564664002,5.810917287059186,33.76675971704329,OK,
+"(4,0,1)",4,0,1,c,c,2819.182888970346,5.812934424311334,33.790206621343735,OK,
+"(4,0,2)",4,0,2,c,c,2820.453212694065,5.821377630195735,33.888437513343305,OK,
+"(5,0,0)",5,0,0,c,c,2814.2202930962467,5.829663273303881,33.984973880108114,OK,
+"(5,0,2)",5,0,2,c,c,2815.8215609553813,5.8312163531401096,34.00308415712864,OK,
+"(4,0,0)",4,0,0,c,c,2818.950631611505,5.83181516094911,34.01006807147589,OK,
+"(3,0,2)",3,0,2,c,c,2824.435621416571,5.8616324099185615,34.35873450900768,OK,
+"(3,0,2)",3,0,2,ct,ct,2819.9382302215367,5.877979492082911,34.55064290934728,OK,
+"(2,0,0)",2,0,0,c,c,2821.750988837809,5.8923310089022385,34.71956471847087,OK,
+"(5,0,0)",5,0,0,ct,ct,2810.223689832308,5.905905356641773,34.87971808160998,OK,
+"(4,0,2)",4,0,2,ct,ct,2816.440546914827,5.936378068466449,35.240584571769446,OK,
+"(4,0,1)",4,0,1,ct,ct,2815.1361310700504,5.946869332541418,35.36525485832161,OK,
+"(5,0,1)",5,0,1,ct,ct,2810.7040651537127,5.956203239889469,35.47635703486981,OK,
+"(2,0,1)",2,0,1,c,c,2822.692546249952,5.9665041870621,35.59917221422956,OK,
+"(3,0,1)",3,0,1,c,c,2822.6336789812462,5.976242732823066,35.715477201620516,OK,
+"(3,0,0)",3,0,0,c,c,2820.9664135120893,5.977572317750905,35.73137081394192,OK,
+"(2,0,2)",2,0,2,c,c,2822.6258463859144,5.980732142817294,35.76915696412794,OK,
+"(1,0,2)",1,0,2,c,c,2821.4671799773723,5.988938576954192,35.8673852785301,OK,
+"(2,0,0)",2,0,0,ct,ct,2817.553440701026,6.072165547922841,36.8711944413811,OK,
+"(2,0,1)",2,0,1,ct,ct,2818.462536612583,6.103789766017883,37.25624950774464,OK,
+"(3,0,1)",3,0,1,ct,ct,2818.1507999943196,6.148656599848688,37.80597798286283,OK,
+"(1,0,2)",1,0,2,ct,ct,2817.1957645471857,6.1549304104612235,37.88316835762037,OK,
+"(0,1,0)",0,1,0,n,n,2825.0200734827013,6.2938553414193255,39.61261505871257,OK,
+"(1,1,2)",1,1,2,n,n,2816.5616947902886,6.294535953814082,39.62118287385815,OK,
+"(2,1,0)",2,1,0,n,n,2816.983340744423,6.295994796325138,39.63955047535321,OK,
+"(1,1,1)",1,1,1,n,n,2816.541439014026,6.298852334142376,39.67554072733086,OK,
+"(0,1,2)",0,1,2,n,n,2815.4615131464307,6.299771243104605,39.68711771544774,OK,
+"(1,1,0)",1,1,0,n,n,2817.7852363396105,6.332517258139274,40.10077482463175,OK,
+"(1,0,0)",1,0,0,ct,ct,2827.294404964323,6.337743948399522,40.16699835547476,OK,
+"(2,1,1)",2,1,1,n,n,2819.304031710443,6.339534850511274,40.189702120847,OK,
+"(0,1,1)",0,1,1,n,n,2816.2802977003776,6.342280104300418,40.22451692140492,OK,
+"(3,1,0)",3,1,0,n,n,2814.9987037031838,6.347299629713741,40.2882125893642,OK,
+"(1,0,0)",1,0,0,c,c,2831.6991123812804,6.370353529442386,40.58140409007906,OK,
+"(5,1,1)",5,1,1,n,n,2809.5904601702687,6.394730279199894,40.892575343715954,OK,
+"(4,1,1)",4,1,1,n,n,2810.8606227629707,6.396893157882524,40.92024207336426,OK,
+"(5,1,0)",5,1,0,n,n,2810.099904641438,6.419010518989161,41.203696042893505,OK,
+"(2,1,2)",2,1,2,n,n,2817.6547661085665,6.456950244015818,41.69220645369593,OK,
+"(4,1,0)",4,1,0,n,n,2810.300598043098,6.463601241962322,41.77814101509687,OK,
+"(5,1,2)",5,1,2,n,n,2811.7054578460297,6.478614247785997,41.97244257161572,OK,
+"(3,1,1)",3,1,1,n,n,2815.274887004829,6.489996761984305,42.12005797056676,OK,
+"(3,1,2)",3,1,2,n,n,2816.542100450586,6.492413035118661,42.1514270185787,OK,
+"(4,1,2)",4,1,2,n,n,2811.9144716136184,6.501404314267458,42.26825805757552,OK,
+"(0,2,0)",0,2,0,n,n,3558.5713756557207,10.725166090523985,115.02918766932554,OK,
+"(2,2,0)",2,2,0,n,n,3109.3903469011175,13.73026744751223,188.52024418021398,OK,
+"(0,0,2)",0,0,2,ct,ct,4787.3270739598165,14.419627508126984,207.92565747313242,OK,
+"(0,0,1)",0,0,1,ct,ct,5548.856556503553,14.47016958099582,209.3858077027768,OK,
+"(0,0,0)",0,0,0,ct,ct,6675.513667863663,14.52339389824113,210.92897032346767,OK,
+"(3,2,0)",3,2,0,n,n,3054.1039138290225,15.753261705590315,248.1652543648183,OK,
+"(5,2,0)",5,2,0,n,n,2975.1289314549613,16.984002119614583,288.4563279990727,OK,
+"(1,2,0)",1,2,0,n,n,3204.829409934323,17.57879514067578,309.0140385978464,OK,
+"(4,2,0)",4,2,0,n,n,2996.657874479948,18.143366485744668,329.1817474360429,OK,
+"(0,0,2)",0,0,2,t,t,6929.918531890009,20.734019992619714,429.899585054354,OK,
+"(0,0,1)",0,0,1,t,t,7965.020847371036,20.980540719950458,440.1830889014992,OK,
+"(0,0,0)",0,0,0,t,t,9225.822531667705,21.102539870530016,445.31718898730907,OK,
+"(0,0,2)",0,0,2,c,c,6010.096794562792,40.37143296861776,1629.852599939597,OK,
+"(0,0,1)",0,0,1,c,c,6709.778483101907,40.474863087185284,1638.214541926394,OK,
+"(0,0,0)",0,0,0,c,c,7917.790032026251,40.663985255392014,1653.5596968507389,OK,
+"(0,0,2)",0,0,2,n,n,8798.934547066612,128.684195228403,16559.62210158174,OK,
+"(0,0,2)",0,0,2,d,n,8798.934547066612,128.684195228403,16559.62210158174,OK,
+"(0,0,1)",0,0,1,n,n,9812.697082871717,129.1295011535564,16674.42806816632,OK,
+"(0,0,1)",0,0,1,d,n,9812.697082871717,129.1295011535564,16674.42806816632,OK,
+"(0,0,0)",0,0,0,n,n,11100.263226967225,129.9569051017161,16888.797183616447,OK,
+"(0,0,0)",0,0,0,d,n,11100.263226967225,129.9569051017161,16888.797183616447,OK,
+"(0,1,0)",0,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,0)",0,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,0)",0,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,1)",0,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,1)",0,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,1)",0,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,2)",0,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,2)",0,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,1,2)",0,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,0)",0,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,0)",0,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,0)",0,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,0)",0,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,1)",0,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,1)",0,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,1)",0,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,1)",0,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,2)",0,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,2)",0,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,2)",0,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(0,2,2)",0,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,0)",1,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,0)",1,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,0)",1,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,1)",1,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,1)",1,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,1)",1,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,2)",1,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,2)",1,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,1,2)",1,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,0)",1,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,0)",1,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,0)",1,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,0)",1,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,1)",1,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,1)",1,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,1)",1,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,1)",1,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,2)",1,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,2)",1,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,2)",1,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(1,2,2)",1,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,0)",2,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,0)",2,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,0)",2,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,1)",2,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,1)",2,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,1)",2,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,2)",2,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,2)",2,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,1,2)",2,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,0)",2,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,0)",2,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,0)",2,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,0)",2,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,1)",2,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,1)",2,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,1)",2,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,1)",2,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,2)",2,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,2)",2,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,2)",2,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(2,2,2)",2,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,0)",3,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,0)",3,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,0)",3,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,1)",3,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,1)",3,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,1)",3,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,2)",3,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,2)",3,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,1,2)",3,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,0)",3,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,0)",3,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,0)",3,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,0)",3,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,1)",3,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,1)",3,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,1)",3,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,1)",3,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,2)",3,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,2)",3,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,2)",3,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(3,2,2)",3,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,0)",4,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,0)",4,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,0)",4,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,1)",4,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,1)",4,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,1)",4,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,2)",4,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,2)",4,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,1,2)",4,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,0)",4,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,0)",4,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,0)",4,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,0)",4,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,1)",4,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,1)",4,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,1)",4,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,1)",4,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,2)",4,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,2)",4,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,2)",4,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(4,2,2)",4,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,0)",5,1,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,0)",5,1,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,0)",5,1,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,1)",5,1,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,1)",5,1,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,1)",5,1,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,2)",5,1,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,2)",5,1,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,1,2)",5,1,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,0)",5,2,0,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,0)",5,2,0,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,0)",5,2,0,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,0)",5,2,0,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,1)",5,2,1,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,1)",5,2,1,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,1)",5,2,1,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,1)",5,2,1,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,2)",5,2,2,c,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,2)",5,2,2,t,t,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,2)",5,2,2,ct,ct,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "
+"(5,2,2)",5,2,2,d,c,,,,FAIL,"In models with integration (`d > 0`) or seasonal integration (`D > 0`), trend terms of lower order than `d + D` cannot be (as they would be eliminated due to the differencing operation). For example, "

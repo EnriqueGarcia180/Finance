@@ -1,0 +1,296 @@
+{
+    "Market Cap": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "USD",
+        "desc": "",
+        "yf_key": "marketCap"
+    },
+    "P/E Ratio trailing": {
+        "criteria": [
+            "between",
+            [
+                5.0,
+                25.0
+            ]
+        ],
+        "unit": "ratio",
+        "desc": "Value Range",
+        "yf_key": "trailingPE"
+    },
+    "P/E Ratio forward": {
+        "criteria": [
+            "between",
+            [
+                5.0,
+                20.0
+            ]
+        ],
+        "unit": "ratio",
+        "desc": "Future Earnings",
+        "yf_key": "forwardPE"
+    },
+    "PEG Ratio": {
+        "criteria": [
+            "<",
+            1.5
+        ],
+        "unit": "ratio",
+        "desc": "< 1.0 is undervalued, < 1.5 is GARP (Growth at Reasonable Price). < 1 This is the ideal range, as it suggests the stock price is low relative to its earnings growth potential, indicating a potentially attractive investment opportunity",
+        "yf_key": "trailingPegRatio"
+    },
+    "Price / Sales": {
+        "criteria": [
+            "<",
+            3.0
+        ],
+        "unit": "ratio",
+        "desc": "< 2.0 for Value; < 3.0 for Growth is acceptable. Capitalization / Revenue.",
+        "yf_key": "priceToSalesTrailing12Months"
+    },
+    "P/B Ratio": {
+        "criteria": [
+            "<",
+            3.0
+        ],
+        "unit": "ratio",
+        "desc": "High ratios indicates that investors value this stock far more for its future earnings and brand than for its physical assets (buildings, cash, and equipment)",
+        "yf_key": "priceToBook"
+    },
+    "EV": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "USD",
+        "desc": "Enterprise Value = Market Cap +Total Debt - Cash & Cash Equivalents",
+        "yf_key": "enterpriseValue"
+    },
+    "EBITDA_usd": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "USD",
+        "desc": "",
+        "yf_key": "ebitda"
+    },
+    "Revenue": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "USD",
+        "desc": "",
+        "yf_key": "totalRevenue"
+    },
+    "EV/Revenue": {
+        "criteria": [
+            "<",
+            3.0
+        ],
+        "unit": "ratio",
+        "desc": "Enterprise Value / Sales. Paying less than 3x sales for the whole business",
+        "yf_key": "enterpriseToRevenue"
+    },
+    "EV/EBITDA": {
+        "criteria": [
+            "<",
+            12.0
+        ],
+        "unit": "ratio",
+        "desc": "< 10 is healthy/undervalued",
+        "yf_key": "enterpriseToEbitda"
+    },
+    "EV/FCF": {
+        "criteria": [
+            "<",
+            20.0
+        ],
+        "unit": "ratio",
+        "desc": "Lower is better. < 15 is great. < 20 is fair for quality"
+    },
+    "FCF Yield_%": {
+        "criteria": [
+            ">",
+            5.0
+        ],
+        "unit": "%",
+        "desc": "The \"Green Flag\" > 5% indicates the company is a cash cow relative to price"
+    },
+    "Div Yield_%": {
+        "criteria": [
+            "between",
+            [
+                2.0,
+                6.0
+            ]
+        ],
+        "unit": "%",
+        "desc": "> 2% is good income, > 6% might be a yield trap",
+        "yf_key": "dividendYield"
+    },
+    "CAGR_%": {
+        "criteria": [
+            ">",
+            10.0
+        ],
+        "unit": "%",
+        "desc": "Compound Annual Growth Rate"
+    },
+    "Revenue Growth Ratio": {
+        "criteria": [
+            ">",
+            0.1
+        ],
+        "unit": "ratio",
+        "desc": "YoY growth forecast proxy",
+        "yf_key": "revenueGrowth"
+    },
+    "Earning Growth Ratio": {
+        "criteria": [
+            ">",
+            0.05
+        ],
+        "unit": "ratio",
+        "desc": "",
+        "yf_key": "earningsGrowth"
+    },
+    "1-Year Change or Momentum": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "ratio",
+        "desc": "Momentum: Positive/Negative trend over 52 weeks",
+        "yf_key": "52WeekChange"
+    },
+    "Gross Margin_ratio": {
+        "criteria": [
+            ">",
+            0.4
+        ],
+        "unit": "ratio",
+        "desc": "",
+        "yf_key": "grossMargins"
+    },
+    "EBIT Margin_%": {
+        "criteria": [
+            ">",
+            10.0
+        ],
+        "unit": "%",
+        "desc": ""
+    },
+    "Net Margin_%": {
+        "criteria": [
+            ">",
+            15.0
+        ],
+        "unit": "%",
+        "desc": ""
+    },
+    "Operating Margins Ratio": {
+        "criteria": [
+            ">",
+            0.15
+        ],
+        "unit": "ratio",
+        "desc": "",
+        "yf_key": "operatingMargins"
+    },
+    "EBITDA Margins Ratio": {
+        "criteria": [
+            ">",
+            0.15
+        ],
+        "unit": "ratio",
+        "desc": "",
+        "yf_key": "ebitdaMargins"
+    },
+    "ROIC_%": {
+        "criteria": [
+            ">",
+            15.0
+        ],
+        "unit": "%",
+        "desc": ""
+    },
+    "ROE Ratio": {
+        "criteria": [
+            ">",
+            0.15
+        ],
+        "unit": "ratio",
+        "desc": "Return on Equity",
+        "yf_key": "returnOnEquity"
+    },
+    "Current Ratio": {
+        "criteria": [
+            ">",
+            1.5
+        ],
+        "unit": "ratio",
+        "desc": "",
+        "yf_key": "currentRatio"
+    },
+    "D/E_%": {
+        "criteria": [
+            "<",
+            100.0
+        ],
+        "unit": "%",
+        "desc": "Debt to Equity",
+        "yf_key": "debtToEquity"
+    },
+    "Beta": {
+        "criteria": [
+            "between",
+            [
+                0.5,
+                1.5
+            ]
+        ],
+        "unit": "ratio",
+        "desc": "0.5-1.5 is stable range; 1.0 is market match",
+        "yf_key": "beta"
+    },
+    "Overall Risk": {
+        "criteria": [
+            "<",
+            5.0
+        ],
+        "unit": "score",
+        "desc": "0 is min - 10 is max",
+        "yf_key": "overallRisk"
+    },
+    "EPS_usd trailing": {
+        "criteria": [
+            ">",
+            10.0
+        ],
+        "unit": "USD",
+        "desc": "Dynamic: Target 10% of CAGR",
+        "yf_key": "trailingEps"
+    },
+    "EPS_usd forward": {
+        "criteria": [
+            ">",
+            10.0
+        ],
+        "unit": "USD",
+        "desc": "Dynamic: Target 10% of CAGR",
+        "yf_key": "forwardEps"
+    },
+    "Book/Share (Book Value)": {
+        "criteria": [
+            ">",
+            0.0
+        ],
+        "unit": "USD",
+        "desc": "",
+        "yf_key": "bookValue"
+    }
+}

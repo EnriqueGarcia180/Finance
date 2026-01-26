@@ -1,0 +1,6 @@
+% Inherit everything from the basic latex template
+((* extends 'article.tplx' *))
+
+% Redefine the input cell block to be empty
+((* block input *))
+((* endblock input *))

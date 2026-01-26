@@ -1,0 +1,25 @@
+"0","# ROI: R Optimization Infrastructure, se refiere al conjunto de métodos matemáticos que optimizan la solución de un problema"
+"0","port_min_global<-PortfolioAnalytics::optimize.portfolio(subassets,"
+"0","                                                        portfolio = port_min_var,"
+"0","                                                        optimize_method = ""ROI"","
+"0","                                                        trace = TRUE)"
+"0","port_min_global"
+"1","***********************************
+PortfolioAnalytics Optimization
+***********************************
+
+Call:
+PortfolioAnalytics::optimize.portfolio(R = subassets, portfolio = port_min_var, 
+    optimize_method = ""ROI"", trace = TRUE)
+
+Optimal Weights:
+ SHELL   NIKE   FORD    SAM   GOVT 
+0.2395 0.2578 0.0649 0.1378 0.3000 
+
+Objective Measure:
+ StdDev 
+0.01142 
+
+
+
+"

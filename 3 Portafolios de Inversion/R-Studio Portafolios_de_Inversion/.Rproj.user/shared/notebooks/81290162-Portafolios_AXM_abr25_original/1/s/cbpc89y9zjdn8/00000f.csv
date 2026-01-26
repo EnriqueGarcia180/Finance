@@ -1,0 +1,188 @@
+"0","library(quantmod) # permite vincular R con portales"
+"2","G2;H2;Warningh: package ‘quantmod’ was built under R version 4.4.3g
+"
+"2","G3;Loading required package: xts
+g"
+"2","G3;Loading required package: zoo
+g"
+"2","G3;
+Attaching package: ‘zoo’
+
+g"
+"2","G3;The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+g"
+"2","G3;Loading required package: TTR
+g"
+"2","G3;Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+g"
+"0","library(PortfolioAnalytics)"
+"2","G2;H2;Warningh: package ‘PortfolioAnalytics’ was built under R version 4.4.3g
+"
+"2","G3;Loading required package: foreach
+g"
+"2","G3;Loading required package: PerformanceAnalytics
+g"
+"2","G3;
+Attaching package: ‘PerformanceAnalytics’
+
+g"
+"2","G3;The following object is masked from ‘package:graphics’:
+
+    legend
+
+g"
+"0","library(ROI)"
+"2","G2;H2;Warningh: package ‘ROI’ was built under R version 4.4.3g
+"
+"2","G3;ROI: R Optimization Infrastructure
+g"
+"2","G3;Registered solver plugins: nlminb, symphony, deoptimr, deoptim, glpk, quadprog.
+g"
+"2","G3;Default solver: auto.
+g"
+"2","G3;
+Attaching package: ‘ROI’
+
+g"
+"2","G3;The following objects are masked from ‘package:PortfolioAnalytics’:
+
+    is.constraint, objective
+
+g"
+"0","library(ROI.plugin.glpk)"
+"2","G2;H2;Warningh: package ‘ROI.plugin.glpk’ was built under R version 4.4.3g
+"
+"0","library(ROI.plugin.deoptim)"
+"2","G2;H2;Warningh: package ‘ROI.plugin.deoptim’ was built under R version 4.4.3g
+"
+"0","library(ROI.plugin.quadprog)"
+"2","G2;H2;Warningh: package ‘ROI.plugin.quadprog’ was built under R version 4.4.3g
+"
+"0","library(fBasics) # estadísticos"
+"2","G2;H2;Warningh: package ‘fBasics’ was built under R version 4.4.3g
+"
+"2","G3;
+Attaching package: ‘fBasics’
+
+g"
+"2","G3;The following object is masked from ‘package:ROI’:
+
+    vech
+
+g"
+"2","G3;The following objects are masked from ‘package:PerformanceAnalytics’:
+
+    kurtosis, skewness
+
+g"
+"2","G3;The following object is masked from ‘package:TTR’:
+
+    volatility
+
+g"
+"0","library(psych) # estadísticos"
+"2","G2;H2;Warningh: package ‘psych’ was built under R version 4.4.3g
+"
+"2","G3;
+Attaching package: ‘psych’
+
+g"
+"2","G3;The following object is masked from ‘package:fBasics’:
+
+    tr
+
+g"
+"0","library(readxl) # importar datos de excel"
+"2","G2;H2;Warningh: package ‘readxl’ was built under R version 4.4.3g
+"
+"0","library(writexl) # exportar objetos a excel"
+"2","G2;H2;Warningh: package ‘writexl’ was built under R version 4.4.3g
+"
+"0","library(stats) # estadísticas"
+"0","library(nortest) # pruebas de Normalidad"
+"0","library(imputeTS) # permite interpolar datos"
+"2","G2;H2;Warningh: package ‘imputeTS’ was built under R version 4.4.3g
+"
+"2","G3;
+Attaching package: ‘imputeTS’
+
+g"
+"2","G3;The following object is masked from ‘package:zoo’:
+
+    na.locf
+
+g"
+"0","library(urca)"
+"0","library(ggplot2)"
+"2","G3;
+Attaching package: ‘ggplot2’
+
+g"
+"2","G3;The following objects are masked from ‘package:psych’:
+
+    %+%, alpha
+
+g"
+"0","library(ggcorrplot)"
+"2","G2;H2;Warningh: package ‘ggcorrplot’ was built under R version 4.4.3g
+"
+"0","library(tidyquant)"
+"2","── [1mConflicts[22m ───────────────────────────────────────────────────────────────────── tidyquant_conflicts() ──
+[31m✖[39m [34mggplot2[39m::[32m%+%()[39m                 masks [34mpsych[39m::%+%()
+[31m✖[39m [34mggplot2[39m::[32malpha()[39m               masks [34mpsych[39m::alpha()
+[31m✖[39m [34mzoo[39m::[32mas.Date()[39m                 masks [34mbase[39m::as.Date()
+[31m✖[39m [34mzoo[39m::[32mas.Date.numeric()[39m         masks [34mbase[39m::as.Date.numeric()
+[31m✖[39m [34mfBasics[39m::[32mkurtosis()[39m            masks [34mPerformanceAnalytics[39m::kurtosis()
+[31m✖[39m [34mPerformanceAnalytics[39m::[32mlegend()[39m masks [34mgraphics[39m::legend()
+[31m✖[39m [34mimputeTS[39m::[32mna.locf()[39m            masks [34mzoo[39m::na.locf()
+[31m✖[39m [34mfBasics[39m::[32mskewness()[39m            masks [34mPerformanceAnalytics[39m::skewness()
+[31m✖[39m [34murca[39m::[32msummary()[39m                masks [34mquantmod[39m::summary(), [34mbase[39m::summary()
+[31m✖[39m [34mfBasics[39m::[32mvolatility()[39m          masks [34mTTR[39m::volatility()
+[36mℹ[39m Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+"
+"0","library(tibble)"
+"0","library(timetk)"
+"2","G3;Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+g"
+"2","G3;
+Attaching package: ‘timetk’
+
+g"
+"2","G3;The following object is masked from ‘package:tidyquant’:
+
+    FANG
+
+g"
+"0","library(plotly)"
+"2","G2;H2;Warningh: package ‘plotly’ was built under R version 4.4.3g
+"
+"2","G3;Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+g"
+"2","G3;
+Attaching package: ‘plotly’
+
+g"
+"2","G3;The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+g"
+"2","G3;The following object is masked from ‘package:stats’:
+
+    filter
+
+g"
+"2","G3;The following object is masked from ‘package:graphics’:
+
+    layout
+
+g"

@@ -1,0 +1,6 @@
+"0","# Combinar todos las columnas de Adjusted Price (6a columna) de todos los assets en la tabla rawprices"
+"0","rawprices<-(merge(SHEL[,6],CVX[,6],BKR[,6],NKE[,6],SAM[,6],FORD[,6],GOOG[,6],DELL[,6],AMZN[,6],MRVL[,6],GOVT[,6],TLT[,6],IBTA.L[,6],IEF[,6],IEI[,6],SHY[,6]))"
+"0","# Nombres de los assets"
+"0","assets<-c(""SHELL"",""CHEVRON"",""BAKER"",""NIKE"",""SAM"",""FORD"",""GOOGLE"",""DELL"",""AMAZON"",""MARVEL"",""GOVT"",""TLT"",""IBTA"",""IEF"",""IEI"",""SHY"")"
+"0","# Renombrar los encabezados de la tabla rawprices con los nombres de los assets"
+"0","colnames(rawprices)<-c(assets)"
